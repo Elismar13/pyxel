@@ -11,7 +11,7 @@ class Pyxel():
     self.imageDimensions = self.image.size
 
   def pixelColorCount(self):
-    rgb_image = self.toRGB()
+    rgb_image = self.toColorPalette('RGB')
     width, height = self.imageDimensions
     pixel_color_count = dict()
 
@@ -26,5 +26,5 @@ class Pyxel():
     
     return pixel_color_count
 
-  def toRGB(self):
-    return self.image.convert('RGB')
+  def toColorPalette(self, palette):
+    return self.image.convert(palette)
