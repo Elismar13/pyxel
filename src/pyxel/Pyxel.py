@@ -1,4 +1,5 @@
-from PIL import Image
+from PIL import Image, ImageFilter
+from pytesseract import image_to_string
 
 class Pyxel():
   def __init__(self):
@@ -28,3 +29,9 @@ class Pyxel():
 
   def toColorPalette(self, palette):
     return self.image.convert(palette)
+    
+  def readTextFromImage(self, language = 'por', imageFilter = ImageFilter.SMOOTH_MORE):
+    imageToRead = self.toColorPalette('L').filter(imageFilter)
+    text = image_to_string(imageToRead, language)
+
+    return text
